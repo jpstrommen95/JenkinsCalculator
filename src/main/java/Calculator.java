@@ -44,12 +44,12 @@ class Calculator {
         ArrayList<Integer> fibs = new ArrayList<Integer>();
         fibs.add(0);
         fibs.add(1);
-        for(int i = 0; i < n; ++i) {
+        for(int i = 2; i <= n; ++i) {
             int first = fibs.get(i - 2);
             int second = fibs.get(i - 1);
             fibs.add(first + second);
         }
-        return fibs.get(fibs.size() - 1);
+        return fibs.get(n);
     }
 
 
@@ -73,7 +73,7 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
-        String uniqueID = new UUID(16, 8).toString();
+        String uniqueID = UUID.randomUUID().toString();
         return n + uniqueID;
     }
 
