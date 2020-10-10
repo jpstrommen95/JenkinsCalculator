@@ -27,12 +27,13 @@ pipeline {
             }
         }
 
+/*
         stage ('Build') {
             steps {
                 sh 'mvn compile'
             }
         }
-
+*/
         stage ('Short Tests') {
             steps {
                 sh 'mvn -Dtest=CalculatorTest test'
