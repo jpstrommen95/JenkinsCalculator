@@ -15,8 +15,8 @@ pipeline {
             steps{
                 script{
                      sh """
-                     echo ${POM_SOURCE}
-                     echo ${POM_TARGET}
+                     echo maven.compile.source value is... ${POM_SOURCE}
+                     echo maven.compile.target value is... ${POM_TARGET}
                      """
                 }
             }
@@ -27,13 +27,13 @@ pipeline {
             }
         }
 
-/*
+
         stage ('Build') {
             steps {
                 sh 'mvn compile'
             }
         }
-*/
+
         stage ('Short Tests') {
             steps {
                 sh 'mvn -Dtest=CalculatorTest test'
