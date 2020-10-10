@@ -1,10 +1,24 @@
 pipeline {
     agent any
+    
+    environment {
+      POM_APP = readMavenPom().getProperties().getProperty('maven.compile.source')
+    }
+    
     tools {
         maven 'apache maven 3.6.3'
         jdk 'JDK 8'
     }
     stages {
+        stage('maven property check'){
+            steps{
+                script{
+                     sh """
+                     echo ${POM_APP}
+                     """
+                }
+            }
+        }
         stage ('Clean') {
             steps {
                 sh 'mvn clean'
