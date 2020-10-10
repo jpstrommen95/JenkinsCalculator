@@ -2,7 +2,8 @@ pipeline {
     agent any
     
     environment {
-      POM_APP = readMavenPom().getProperties().getProperty('maven.compile.source')
+      POM_SOURCE = readMavenPom().getProperties().getProperty('maven.compile.source')
+      POM_TARGET = readMavenPom().getProperties().getProperty('maven.compile.target')
     }
     
     tools {
@@ -14,7 +15,8 @@ pipeline {
             steps{
                 script{
                      sh """
-                     echo ${POM_APP}
+                     echo ${POM_SOURCE}
+                     echo ${POM_TARGET}
                      """
                 }
             }
